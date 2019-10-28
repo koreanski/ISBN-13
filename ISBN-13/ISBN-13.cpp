@@ -5,7 +5,9 @@
 using namespace std;
 int isbn_in; // eingegebe isbn
 const int isbn_l = 13; // isbn länge
-int isbn[isbn_l]; // array der eingegebene isbn
+char isbn_test[] = { "978-3-426-28154-3" }; // test initialisiert
+//char isbn[]; // array der eingegebene isbn
+
 int z[13];
 int sum_g = 0;
 int sum_u = 0;
@@ -14,23 +16,30 @@ int pruef;
 
 
 int main()
-{
+{	
+	cout << "Bitte geben sie die ISBN ein: "<<endl;
+	//cin >> isbn;
+	int g_count = sizeof(isbn_test) / sizeof(char); // g_count größe des arrays
 
-	
-	cout << "Bitte geben sie die ISBN ein: ";
-
-	for (int i = 0; i < isbn_l; i++)
+	for (int i = 0,j=0; i < g_count; i++)
 	{
-		cin >> z[i];
+		if (48 < isbn_test[i] && isbn_test[i] < 58)
+		{
+			z[j] = isbn_test[i] - 48;
+			j++;
+		}
 	}
-	"\n";
-	cout << z[12]<<endl;
+
+	cout << z[0];
+
+	cout<<"\n";
+
 	for (int g = 0; g < 11; g = g+2)
 	{
 		sum_g += z[g];
-		
 	}
 	cout << sum_g<<endl;
+
 	for (int u = 1; u < 13; u = u + 2)
 	{
 		sum_u += z[u];
@@ -40,15 +49,14 @@ int main()
 	pruef = (10 - (sum_g + 3 * sum_u) % 10) % 10;
 
 	cout << pruef << endl;
-	"\n";
 
 	if (pruef != z[12])
 	{
-		cout << "Die von Ihnen eingegebene ISBN ist nicht gültig." << endl;
+		cout << "Die von Ihnen eingegebene ISBN ist nicht gueltig." << endl;
 	}
 
 		
-	//char g_count = sizeof(isbn) / sizeof(char); // g_count größe des arrays
+	
 
 
 }
